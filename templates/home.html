@@ -1,0 +1,373 @@
+</html> <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&family=Lusitana&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/home.css"> 
+    <title>Perfume Matcher</title>
+</head>
+<body>
+   
+    <style>
+    body {
+        background-color: #1F1909;
+        font-family: "Lusitana", serif; 
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        color: rgb(255, 255, 255); 
+    }
+
+    .container {
+        margin-top: 5%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+        margin-left: 32%; 
+        margin-right: 28%; 
+    }
+
+    .column {
+        width: 22%; 
+        margin-bottom: 20px;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .column label {
+        font-family: "Junge", cursive;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 100;
+        color: rgb(255, 255, 255); 
+        margin-bottom: 5px; 
+    }
+
+    .column2 label {
+        font-family: "Junge", cursive;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 100;
+        color: rgb(255, 255, 255); 
+        margin-bottom: 5px;
+    }
+
+    .column2 {
+        width: 17%; 
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 43%;
+        text-align: center; 
+    }
+
+
+    h2 {
+        margin-top: 0;
+        font-family: "Lusitana", serif;
+        font-weight: 100;
+    }
+
+    h1 {
+        font-family: "Lusitana", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 50px;
+        margin-top: 5%;
+    }
+
+    h4 {
+        margin-top: -15%;
+        font-family: "Lusitana", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 15px;
+    }
+
+    p {
+        margin: 0; 
+        font-family: "Pinyon Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 34px;
+    }
+
+    p.name {
+        margin-left: 35%;
+        font-family: "Junge", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 15px;
+        color: rgb(119, 9, 9);
+    }
+
+    .text {
+        margin-left: 31%; 
+    }
+
+    .button {
+        margin-left: 49%;
+        margin-top: 5%;
+        display: inline-block;
+        margin-bottom: 5%;
+    }
+
+    .button input[type="submit"] {
+        font-family: "Lusitana", serif;
+        background-color: #360104; 
+        color: #ffffff; 
+        padding: 15px 20px; 
+        border: none; 
+        cursor: pointer; 
+        border-radius: 5px; 
+        text-align: center; 
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px; 
+    }
+
+    .button input[type="submit"]:hover {
+        background-color: #ffffff; 
+        color: #360104; 
+    }
+
+    .gender-option.selected {
+        text-decoration:underline;
+        font-style: italic;
+    }
+
+    .base-option.selected {
+        text-decoration:underline;
+        font-style: italic;
+    }
+
+    .mid-option.selected {
+        text-decoration:underline;
+        font-style: italic;
+    }
+
+    .hidden-checkbox {
+        display: none;
+    }
+
+    .base-option:hover {
+        color: #898989;
+    }
+
+    .mid-option:hover {
+        color: #898989;
+    }
+
+    .gender-option:hover {
+        color: #898989;
+    }
+
+    img {
+        margin-left: 38%; 
+        margin-top: 2%;
+    }
+
+
+    @media screen and (max-width: 1200px) {
+        .img
+        .container {
+            margin-left: 20%; 
+            margin-right: 18%; 
+        }
+        img {
+        margin: auto;
+        max-width: 280px;
+        }
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            margin-left: 10%; 
+            margin-right: 8%; 
+        }
+
+        span.mid-option {
+            font-size: 11px;
+        }
+
+        span.base-option {
+            font-size: 11px;
+        }
+
+        span.gender-option {
+            font-size: 11px;
+        }
+
+        h2{ 
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 40px; 
+        }
+        p {
+            font-size: 20px;
+        }
+
+        p.name {
+            font-size: 13px;
+            margin-left: 50%;
+        }
+
+        h4 {
+            font-size: 12px; 
+        }
+
+        .text {
+
+            margin-left: 20%; 
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .container {
+            margin-left: 5%; 
+            margin-right: 3%; 
+        }
+
+        .column {
+            width: 33%; 
+        }
+
+        .column2 {
+            width: 80%; 
+            margin-left: 10%; 
+        }
+
+        .button {
+            margin-left: 36%;
+        }
+
+        h1 {
+            font-size: 30px; 
+        }
+
+        h4 {
+            font-size: 10px;
+        }
+
+        .text {
+            margin-left: 5%; 
+        }
+    }
+    </style>
+
+    <div class="text">
+        <h1>CHOOSE YOUR SCENT</h1>
+        <p>“Perfume is the art that makes memory speak.”</p>
+        <p class="name">- Francis Kurkdjian</p>
+        <form action="/" method="post" class="clearfix">
+    </div>
+
+     <img src="{{ url_for('static', filename='22463.jpg') }}" alt="Background Image" >
+
+       
+    <div class="container">
+        <div class="column">
+            <h2>Top</h2>
+            <h4>first impression</h4>
+            <label><input type="checkbox" name="attribute" value="Orange"class="hidden-checkbox"> <span class="mid-option"> Orange</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Lotus"class="hidden-checkbox"> <span class="mid-option"> Lotus</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Juniper Berries"class="hidden-checkbox"> <span class="mid-option"> Juniper</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Apple"class="hidden-checkbox"> <span class="mid-option"> Apple</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Bergamot"class="hidden-checkbox"> <span class="mid-option"> Bergamot</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Lemon"class="hidden-checkbox"> <span class="mid-option"> Lemon</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Spices"class="hidden-checkbox"> <span class="mid-option"> Spices</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Mint"class="hidden-checkbox"> <span class="mid-option"> Mint</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Peach"class="hidden-checkbox"> <span class="mid-option"> Peach</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Neroli"class="hidden-checkbox"> <span class="mid-option"> Nerloi</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Mandarin Orange"class="hidden-checkbox"> <span class="mid-option">Mandarin Orange</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Violet"class="hidden-checkbox"> <span class="mid-option"> Violet</span></label><br>
+        </div>
+
+        <div class="column">
+            <h2>Heart</h2>
+            <h4>fragrance essence</h4>
+            <label><input type="checkbox" name="attribute" value="Jasmine" class="hidden-checkbox"> <span class="mid-option"> Jasmine</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Rose" class="hidden-checkbox"> <span class="mid-option"> Rose</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Amber" class="hidden-checkbox"> <span class="mid-option"> Amber</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Musk" class="hidden-checkbox"> <span class="mid-option"> Musk</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Lily-of-the-Valley" class="hidden-checkbox"> <span class="mid-option"> Lily</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Leather" class="hidden-checkbox"> <span class="mid-option"> Leather</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Peach" class="hidden-checkbox"> <span class="mid-option"> Peach</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Magnolia" class="hidden-checkbox"> <span class="mid-option"> Magnolia</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Vanilla" class="hidden-checkbox"> <span class="mid-option"> Vanilla</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Lotus" class="hidden-checkbox"> <span class="mid-option"> Lotus</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Raspberry" class="hidden-checkbox"> <span class="mid-option"> Raspberry</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Ylang-Ylang" class="hidden-checkbox"> <span class="mid-option"> Ylang-Ylang</span></label><br>
+        </div>
+
+
+        <div class="column">
+            <h2>Base</h2>
+            <h4>deep and enduring</h4>
+            <label><input type="checkbox" name="attribute" value="Tobacco" class="hidden-checkbox"> <span class="base-option"> Tobacco</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Amber" class="hidden-checkbox"> <span class="base-option"> Amber</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Patchouli" class="hidden-checkbox"> <span class="base-option"> Patchouli</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Musk" class="hidden-checkbox"> <span class="base-option"> Musk</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Lily-of-the-Valley" class="hidden-checkbox"> <span class="base-option"> Lily</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Sandalwood" class="hidden-checkbox"> <span class="base-option"> Sandalwood</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Vanilla"class="hidden-checkbox"> <span class="base-option"> Vanilla</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Woody Notes"class="hidden-checkbox"> <span class="base-option"> Wood</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Oakmoss" class="hidden-checkbox"> <span class="base-option"> Oakmoss</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Leather" class="hidden-checkbox"> <span class="base-option"> Leather</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Coconut"class="hidden-checkbox"> <span class="base-option"> Coconut</span></label><br>
+            <label><input type="checkbox" name="attribute" value="Vetiver"class="hidden-checkbox"> <span class="base-option"> Vetiver</span></label><br>
+        </div>
+    </div>
+    <div class="column2">
+        <h2>Gender</h2>
+        <label><input type="checkbox" name="gender" value="men" class="hidden-checkbox"> <span class="gender-option">Male</span></label><br>
+        <label><input type="checkbox" name="gender" value="women" class="hidden-checkbox"> <span class="gender-option">Female</span></label><br>
+        <label><input type="checkbox" name="gender" value="unisex" class="hidden-checkbox"> <span class="gender-option">Unisex</span></label><br>
+    </div>
+
+
+<div class="button">
+    <input type="submit" value="FIND">
+</div>
+</form>
+
+<script>
+var checkboxes = document.querySelectorAll('.hidden-checkbox');
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        var label = checkbox.nextElementSibling; 
+        if (checkbox.checked) {
+            label.classList.add('selected');
+        } else {
+            label.classList.remove('selected');
+        }
+    });
+});
+
+document.querySelectorAll('.option-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+        this.classList.toggle('selected');
+    });
+});
+</script>
+
+</body>
+</html>

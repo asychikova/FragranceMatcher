@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&family=Lusitana&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/home.css"> 
+    <title>Perfume Matcher - Results</title>
+</head>
+<body>
+    <style>
+
+  /*  .perfume {
+        display: flex;
+        width: calc( - 20px); 
+        margin: 10px; 
+        padding: 10px; 
+        border:none; 
+        box-sizing: border-box; 
+    }*/
+
+    .perfume-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        font-family: "Lusitana", serif;
+    }
+
+    .perfume-info {
+        flex: 1;
+        margin-left: 5%;
+        background-color: beige;
+        padding: 5%;
+        border-radius: 20%;
+        
+    }
+
+    .perfume-image {
+        margin-left: 20px;
+    }
+
+    .perfume-image img {
+        max-width: 300px; 
+        max-height: 300px;
+        width: auto; 
+        height: auto; 
+   
+    }
+
+    .center-container {
+        text-align: center; 
+        margin: 0 auto; 
+    }
+
+    h1 {
+        font-family: "Lusitana", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 50px;
+        margin-top: 3%;
+        margin-bottom: 0;
+    }
+
+    .name {
+        color: rgb(131, 9, 9);
+        font-family: "Lusitana", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+
+    .headp {
+        margin: 0;
+        font-family: "Pinyon Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 37px;
+        margin-bottom: 2%;
+        color: rgb(97, 97, 97);
+    }
+
+    button[type="submit"] {
+        font-family: "Lusitana", serif;
+        background-color: rgb(92, 6, 6); 
+        color: white; 
+        padding: 15px 20px; 
+        border: none; 
+        cursor: pointer; 
+        border-radius: 5px; 
+        text-align: center;
+        text-decoration: none; 
+        display: inline-block; 
+        font-size: 16px;       
+    }
+
+    button[type="submit"]:hover {
+        background-color: #000000; 
+    }
+    
+    .form-container {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 20%; 
+        margin-bottom: 2%;
+    }
+
+    .perfume {
+        display: flex;
+        width: calc(- 20px); 
+        margin: 10px; 
+        padding: 10px; 
+        border: none;
+        box-sizing: border-box; 
+    }
+
+    @media screen and (min-width: 768px) {
+        .perfume-container {
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            font-family: "Lusitana", serif;
+        }
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .perfume-image {
+            margin:5px;
+        }
+        .perfume-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            font-family: "Lusitana", serif;
+        }
+
+        .headp {
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 30px; 
+        }
+
+        .perfume {
+            margin: 0;
+            width: calc(100% - 20px); 
+            flex-direction: column; 
+            align-items: center; 
+            margin: 0px; 
+            padding: 0px; 
+        }
+
+        .perfume-info {
+            margin-left: 0; 
+            margin-top: 0;
+            margin-bottom: 15%;
+            background-color: rgb(255, 255, 255);
+            padding: 3%;
+            border-radius: 1%;
+            text-align: center; 
+        }
+
+        .perfume-image img {
+            max-width: 219px; 
+            max-height: 102px; 
+            width: auto; 
+            height: auto; 
+        }
+
+        .name {
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+        .perfume-info {
+            text-align: center;
+            font-size: 10px;
+        }
+    }
+    </style>
+   
+    {% if perfumes %}
+    <div class="center-container">
+        <h1>MATCHES</h1>
+        <p class="headp" >Perfumes that match your choose...</p>
+    </div>
+    <div class="form-container">
+        <form action="/" method="get">
+            <button type="submit">GO BACK</button>
+        </form>
+    </div>
+    <div class="perfume-container">
+        {% for perfume in perfumes %}
+        <div class="perfume">
+            <div class="perfume-image">
+                {% if perfume['image_urls'] %}
+                    <img src="{{ perfume['image_urls'].split(';')[0] }}" alt="Perfume Image">
+                {% endif %}
+                </div>
+            <div class="perfume-info">
+            <p class="name"><strong>{{ perfume['name'] }}</strong></p>
+            <p1><strong>Gender:</strong> {{ perfume['gender'] }}</p>
+            {% if perfume['season'] == "['spring', 'summer', 'autumn', 'winter']" %}
+                <p1><strong>Season:</strong> All Seasons</p>
+            {% else %}
+            {% set season = perfume['season'][2:-2] | replace("', '", ", ") %} {# Remove first and last character which are brackets and replace ', ' with , #}
+                <p1><strong>Season:</strong> {{ season }}</p>
+            {% endif %}
+            {% if perfume['longevity_rating'] != 'No data' and perfume['longevity_rating'] != 'moderate' %}
+                <p1><strong>Longevity:</strong> {{ perfume['longevity_rating'] }}</p>
+            {% endif %}
+            {% if perfume['sillage_rating'] != 'No data' and perfume['sillage_rating'] != 'moderate' %}
+                <p1><strong>Sillage:</strong> {{ perfume['sillage_rating'] }}</p>
+            {% endif %}
+            <p1><strong>Time of Day:</strong> {{ perfume['day_rating'] }}</p>
+            {% if perfume['top'] %}
+            <p1><strong>Top Notes:</strong> {{ perfume['top'].replace(',', ', ') }}</p>
+        {% endif %}
+        {% if perfume['middle'] %}
+            <p1><strong>Middle Notes:</strong> {{ perfume['middle'].replace(',', ', ') }}</p>
+        {% endif %}
+        {% if perfume['base'] %}
+            <p1><strong>Base Notes:</strong> {{ perfume['base'].replace(',', ', ') }}</p>
+        {% endif %}
+        
+            </div>
+       
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="center-container">
+        <h1>MATCHES NOT FOUND</h1>
+        <p class="headp" >Maybe you will like this options...</p>
+    </div>
+ 
+    <div class="form-container">
+        <form action="/" method="get">
+            <button type="submit">GO BACK</button>
+        </form>
+    </div>
+    <div class="perfume-container">
+        <div class="perfume">     
+            <div class="perfume-image">
+            <img src="http://fimgs.net/images/perfume/nd.1825.jpg" alt="Perfume Image">
+            </div>
+            <div class="perfume-info">
+                <p class="name"><strong>Tobacco Vanille Tom Ford for women and men</strong></p>
+                <p1><strong>Top Notes:</strong>Tonka Bean, Tobacco blossom, Vanilla, Cacao</p>
+                <p1><strong>Middle Notes:</strong>Dried Fruits, Woody Notes</p>
+                <p1><strong>Base Notes:</strong>Tobacco Leaf,Spicy Notes</p>
+                <p1><strong>Season:</strong>Winter</p>
+                <p1><strong>Longevity:</strong>very long</p>
+                <p1><strong>Sillage:</strong> heavy</p>
+                <p1><strong>Time of Day:</strong>night</p>
+            </div>
+        </div>
+      
+        <div class="perfume">
+            <div class="perfume-image">
+            <img src="http://fimgs.net/images/perfume/nd.475.jpg" alt="Perfume Image">
+            </div>
+            <div class="perfume-info">
+                <p class="name"><strong>Neroli Sauvage Creed for women and men</strong></p>
+                <p1><strong>Top Notes:</strong>Citrus Aromatic</p>
+                <p1><strong>Middle Notes:</strong>Bergamot,Grapefruit</p>
+                <p1><strong>Base Notes:</strong>Amber, White floral, Herbal</p>
+                <p1><strong>Season:</strong>Summer</p>
+                <p1><strong>Longevity:</strong>long</p>
+                <p1><strong>Sillage:</strong>middle</p>
+                <p1><strong>Time of Day:</strong>day</p>
+            </div>
+        </div>
+        
+        <div class="perfume">
+            <div class="perfume-image">
+            <img src="http://fimgs.net/images/perfume/nd.14610.jpg" alt="Perfume Image">
+            </div>
+            <div class="perfume-info">
+                <p class="name"><strong>Oud Maison Francis Kurkdjian for women and men</strong></p>
+                <p1><strong>Top Notes:</strong>Saffron, Elemi resin</p>
+                <p1><strong>Middle Notes:</strong>Vanilla, Ambrette (Musk Mallow), Atlas Cedar</p>
+                <p1><strong>Base Notes:</strong> Laotian Oud, Indonesian Patchouli Leaf</p>
+                <p1><strong>Season:</strong>Autumn</p>
+                <p1><strong>Longevity:</strong> long</p>
+                <p1><strong>Sillage:</strong>heavy</p>
+                <p1><strong>Time of Day:</strong>night</p>
+            </div>
+        </div>
+       
+        <div class="perfume">
+            <div class="perfume-image">
+            <img src="http://fimgs.net/images/perfume/nd.10884.jpg" alt="Perfume Image">
+            </div>
+            <div class="perfume-info">
+                <p class="name"><strong>Armani Privé Oud Royal Giorgio Armani for women and men</strong></p>
+                <p1><strong>Top Notes:</strong> Saffron</p>
+                <p1><strong>Middle Notes:</strong> Oud rose</p>
+                <p1><strong>Base Notes:</strong>Amber myrrh, Sandalwood, Frankincense</p>
+                <p1><strong>Season:</strong>Winter</p>
+                <p1><strong>Longevity:</strong> long</p>
+                <p1><strong>Sillage:</strong>heavy</p>
+                <p1><strong>Time of Day:</strong>night</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+</html>
+
+
